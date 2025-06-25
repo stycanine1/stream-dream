@@ -1,63 +1,48 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ZETFLIX</title>
-  <link rel="stylesheet" href="css/home.css" />
-  <link rel="icon" type="image/png" href="/assets/zetflix-logo.png" />
+  <link rel="stylesheet" href="./css/home.css" />
 </head>
 <body>
-  <header class="navbar">
-    <img src="/assets/zetflix-logo.png" alt="ZETFLIX Logo" class="logo" />
+  <header>
+    <img src="./img/logo.png" alt="ZETFLIX Logo" class="logo" />
     <nav>
-      <ul class="nav-links">
+      <ul>
         <li><a href="#">Home</a></li>
         <li><a href="#">Movies</a></li>
         <li><a href="#">TV Shows</a></li>
         <li><a href="#">Genres</a></li>
       </ul>
     </nav>
-    <input type="text" class="search-bar" placeholder="Search for a title..." />
+    <input type="text" id="search" placeholder="Search for a title..." />
   </header>
 
   <main>
     <section class="hero">
-      <div class="hero-text">
-        <h1>Welcome to ZETFLIX</h1>
-        <p>Unlimited movies and series, no sign-in required.</p>
-      </div>
+      <h1>Welcome to ZETFLIX</h1>
+      <p>Unlimited movies and series, no sign-in required.</p>
     </section>
 
     <section class="category">
       <h2>🔥 Trending Now</h2>
-      <div class="slider" id="trending">
-        <!-- Movie cards will be injected by JS -->
-      </div>
+      <div class="movie-grid" id="trending"></div>
     </section>
 
     <section class="category">
-      <h2>🎬 Top Rated</h2>
-      <div class="slider" id="top-rated">
-        <!-- Movie cards will be injected by JS -->
-      </div>
+      <h2>🎩 Top Rated</h2>
+      <div class="movie-grid" id="top-rated"></div>
     </section>
 
     <section class="category">
       <h2>📺 TV Series</h2>
-      <div class="slider" id="tv-series">
-        <!-- Movie cards will be injected by JS -->
-      </div>
+      <div class="movie-grid" id="tv-series"></div>
     </section>
   </main>
 
-  <div id="modal" class="modal hidden">
-    <div class="modal-content">
-      <span class="close-btn" onclick="closeModal()">&times;</span>
-      <iframe id="video-player" src="" frameborder="0" allowfullscreen></iframe>
-    </div>
-  </div>
-
-  <script src="js/home.js"></script>
+  <script src="./js/home.js"></script>
 </body>
 </html>
