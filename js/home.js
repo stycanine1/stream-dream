@@ -121,3 +121,31 @@ const API_KEY = '76324910ca15f543396c779ace8cb604';
     }
 
     init();
+let currentEpisodeId = null;
+
+async function loadStreamContent(id) {
+  const server = document.getElementById('server-select').value;
+  const player = document.getElementById('player-frame');
+
+  try {
+    const res = await fetch(`https://api.consumet.org/movies/flixhq/watch?episodeId=${id}&server=${server}`);
+    const data = await res.json();
+
+    if (data?.headers?.Referer) {
+      player.src = data.headers.Referer;
+    } else if (data?.sources?.[0]?.url) {
+      player.src = data.sources[0].url;
+    } else {
+      player.src = '';
+      player.innerHTML = 'Invalid source, please switch servers!';
+    }
+  } catch (err) {
+    player.src = '';
+    player.innerHTML = 'Error loading stream.';
+  }
+}
+
+function onEpisodeClick(id) {
+  currentEpisodeId = id;
+  loadStreamContent(id);
+}
