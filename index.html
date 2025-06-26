@@ -7,52 +7,23 @@
   <link rel="stylesheet" href="css/home.css" />
 </head>
 <body>
-  <header>
-    <div class="logo">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/7/75/Netflix_icon.svg" alt="ZETFLIX Logo" style="width: 25px; vertical-align: middle; margin-right: 8px;" />
-      <span>ZETFLIX</span>
-    </div>
-    <ul class="nav-links">
-      <li><a href="#" id="navHome">Home</a></li>
-      <li><a href="#" id="navMovies">Movies</a></li>
-      <li><a href="#" id="navTV">TV Shows</a></li>
-      <li><a href="#" id="navGenres">Genres</a></li>
-    </ul>
-    <div class="search-bar">
-      <input type="text" placeholder="Search for a title..." id="searchInput" />
-    </div>
-  </header>
-
-  <!-- Landing Section (Intro) -->
-  <section id="landing">
-    <div class="landing-content">
-      <h1>ZETFLIX</h1>
-      <p>Unlimited movies and series, no sign-in required.</p>
-      <div id="randomVideoContainer">
-        <div id="trailerPlayer"></div> <!-- This will be the autoplay trailer -->
-        <button id="enterSiteBtn">Enter the site</button>
+  <!-- Landing Page Section -->
+  <div class="landing-page">
+    <header class="landing-header">
+      <div class="logo">
+        <img src="your-logo-path.svg" alt="ZETFLIX Logo" style="width: 150px; vertical-align: middle; margin-right: 8px;" />
+        <span>ZETFLIX</span>
       </div>
-    </div>
-  </section>
+    </header>
+    
+    <!-- Random Video Section -->
+    <section class="video-container">
+      <h1>Now Playing: <span id="video-title">Loading...</span></h1>
+      <iframe id="video-player" width="100%" height="500" src="" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <button id="enter-site-button" onclick="enterSite()">Enter the site</button>
+    </section>
+  </div>
 
-  <!-- Main Content Section (hidden until user enters site) -->
-  <section id="mainContent" style="display: none;">
-    <div class="section-title">
-      <span>🔥</span><h2>Trending Now</h2>
-    </div>
-    <div class="movie-grid" id="trendingGrid"></div>
-
-    <div class="section-title">
-      <span>📽️</span><h2>Top Rated</h2>
-    </div>
-    <div class="movie-grid" id="topRatedGrid"></div>
-
-    <div class="section-title">
-      <span>📺</span><h2>TV Series</h2>
-    </div>
-    <div class="movie-grid" id="tvGrid"></div>
-  </section>
-
-  <script src="js/home.js"></script>
+  <script src="js/landing.js"></script>
 </body>
 </html>
