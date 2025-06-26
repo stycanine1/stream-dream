@@ -13,40 +13,45 @@
       <span>ZETFLIX</span>
     </div>
     <ul class="nav-links">
-      <li><a href="#">Home</a></li>
-      <li><a href="#">Movies</a></li>
-      <li><a href="#">TV Shows</a></li>
-      <li><a href="#">Genres</a></li>
+      <li><a href="#homeSection">Home</a></li>
+      <li><a href="#moviesSection">Movies</a></li>
+      <li><a href="#tvSection">TV Shows</a></li>
+      <li><a href="#genresSection">Genres</a></li>
     </ul>
     <div class="search-bar">
       <input type="text" placeholder="Search for a title..." id="searchInput" />
     </div>
   </header>
 
-  <section class="welcome">
+  <section class="welcome" id="homeSection">
     <h1>Welcome to ZETFLIX</h1>
     <p>Unlimited movies and series, no sign-in required.</p>
   </section>
 
-  <section>
+  <section id="moviesSection">
     <div class="section-title">
       <span>🔥</span><h2>Trending Now</h2>
     </div>
     <div class="movie-grid" id="trendingGrid"></div>
-  </section>
 
-  <section>
     <div class="section-title">
       <span>📽️</span><h2>Top Rated</h2>
     </div>
     <div class="movie-grid" id="topRatedGrid"></div>
   </section>
 
-  <section>
+  <section id="tvSection">
     <div class="section-title">
       <span>📺</span><h2>TV Series</h2>
     </div>
     <div class="movie-grid" id="tvGrid"></div>
+  </section>
+
+  <section id="genresSection">
+    <div class="section-title">
+      <span>🎭</span><h2>Genres</h2>
+    </div>
+    <div class="movie-grid" id="genresGrid">Coming soon...</div>
   </section>
 
   <script src="js/home.js"></script>
