@@ -57,7 +57,7 @@ function playEpisode(episodeId) {
             const videoKey = data.results[0]?.key;
             if (videoKey) {
                 videoPlayer.src = `${youtubeBase}${videoKey}`;
-                videoTitle.textContent = episodeId; // Set episode title dynamically
+                videoTitle.textContent = episodeId;
             }
         })
         .catch(err => console.error("Error loading episode:", err));
