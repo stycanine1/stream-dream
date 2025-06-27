@@ -1,124 +1,186 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap");
 
+/* Resetting margin, padding, and setting the font family */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 
 body {
-    background: #000;
+  background: #000;
+  overflow: hidden; /* Hide anything that goes outside the viewport */
 }
 
+/* Flashing Logo Container */
+#flash-logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+  animation: flash 1s ease-in-out infinite;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3rem;
+  font-weight: bold;
+  color: #e50914; /* Netflix-like red color */
+  z-index: 100; /* Ensure it stays on top */
+}
+
+/* Flash Effect */
+@keyframes flash {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Hide logo after the animation */
+.hidden {
+  display: none;
+}
+
+/* Editable Text Logo */
+#editable-logo {
+  font-family: 'Poppins', sans-serif;
+  font-size: 12vmin;
+  font-weight: 700;
+  color: #e50914; /* Netflix-like red color */
+  cursor: text;
+  text-align: center;
+  white-space: nowrap;
+  text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5); /* Adding shadow for depth */
+}
+
+/* Header Styles */
 header {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 30px 100px;
-    z-index: 100;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 100px;
+  z-index: 10; /* Ensures the header is on top after the flash logo */
 }
 
 header .logo img {
-    max-width: 150px;
+  max-width: 150px;
 }
 
 .navigation {
-    list-style: none;
-    display: flex;
+  list-style: none;
+  display: flex;
 }
 
 .navigation li {
-    margin: 0 20px;
+  margin: 0 20px;
 }
 
 .navigation a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: 600;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
 }
 
 .search {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .search input {
-    padding: 5px;
-    margin-right: 10px;
+  padding: 5px;
+  margin-right: 10px;
 }
 
 .search i {
-    color: #fff;
+  color: #fff;
 }
 
+/* Banner Section */
 .banner {
-    position: relative;
+  position: relative;
 }
 
 .bg {
-    width: 100%;
-    height: 400px;
-    object-fit: cover;
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
 }
 
 .content {
-    position: absolute;
-    bottom: 30px;
-    left: 30px;
-    color: white;
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+  color: white;
 }
 
 .movieTitle {
-    width: 200px;
-    margin-bottom: 10px;
+  width: 200px;
+  margin-bottom: 10px;
 }
 
 .tv-show-container {
-    padding: 20px;
-    background: rgba(0, 0, 0, 0.6);
-    margin: 20px;
-    border-radius: 10px;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.6);
+  margin: 20px;
+  border-radius: 10px;
 }
 
+/* Controls for seasons and episodes */
 #seasons, #episodes {
-    padding: 10px;
-    margin-top: 10px;
+  padding: 10px;
+  margin-top: 10px;
 }
 
+/* Play Episode Button */
 #play-episode {
-    background: #f44336;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    margin-top: 20px;
+  background: #f44336;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  margin-top: 20px;
 }
 
 #play-episode:hover {
-    background: #e41f1f;
+  background: #e41f1f;
 }
 
+/* Video Container */
 .video-container {
-    margin: 20px;
-    padding: 20px;
-    background-color: rgba(0, 0, 0, 0.7);
-    border-radius: 10px;
+  margin: 20px;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
 }
 
+/* Enter Site Button */
 #enter-site-button {
-    background-color: #f44336;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    margin-top: 10px;
+  background-color: #f44336;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
 }
 
 #enter-site-button:hover {
-    background-color: #e41f1f;
+  background-color: #e41f1f;
+}
+
+/* Main Content Hidden Initially */
+#main-content {
+  display: none;
+  text-align: center;
+  font-size: 2rem;
 }
