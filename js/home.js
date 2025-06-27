@@ -1,43 +1,68 @@
 const apiKey = "76324910ca15f543396c779ace8cb604";
 const baseUrl = "https://api.themoviedb.org/3";
-const imageBase = "https://image.tmdb.org/t/p/w500";
 const youtubeBase = "https://www.youtube.com/embed/";
 
-function fetchRandomTrendingVideo() {
-  const trendingUrl = `${baseUrl}/trending/all/week?api_key=${apiKey}`;
+const seasonSelect = document.querySelector("#seasons");
+const episodeSelect = document.querySelector("#episodes");
+const playBtn = document.querySelector("#play-episode");
+const videoTitle = document.querySelector("#video-title");
+const videoPlayer = document.querySelector("#video-player");
 
-  fetch(trendingUrl)
-    .then(res => res.json())
-    .then(data => {
-      const randomItem = data.results[Math.floor(Math.random() * data.results.length)];
-      const videoTitle = randomItem.title || randomItem.name;
-      const videoId = randomItem.id;
-      
-      // Set video title
-      document.getElementById("video-title").textContent = videoTitle;
-      
-      // Set YouTube trailer link (assuming the trailer is available for that movie/show)
-      const trailerUrl = `${baseUrl}/movie/${videoId}/videos?api_key=${apiKey}`;
-      fetch(trailerUrl)
-        .then(res => res.json())
-        .then(trailerData => {
-          const videoKey = trailerData.results[0]?.key;
-          if (videoKey) {
-            document.getElementById("video-player").src = `${youtubeBase}${videoKey}`;
-          }
-        });
-    })
-    .catch(err => {
-      console.error("Error fetching trending video:", err);
+function updateEpisodeOptions() {
+    const selectedSeason = seasonSelect.value;
+
+    // Fetch episode data for the selected season (this can be expanded with an actual API call)
+    const episodes = getEpisodesForSeason(selectedSeason);
+    
+    // Update episode options dynamically
+    episodeSelect.innerHTML = ''; // Clear existing episodes
+    episodes.forEach(episode => {
+        const option = document.createElement('option');
+        option.value = episode.id;
+        option.textContent = episode.title;
+        episodeSelect.appendChild(option);
     });
 }
 
-// Call function to fetch and display a random video
-document.addEventListener("DOMContentLoaded", () => {
-  fetchRandomTrendingVideo();
+function getEpisodesForSeason(season) {
+    // Replace this with actual API fetching or data logic
+    const episodes = {
+        "season-1": [
+            { id: 'episode-1', title: 'Episode 1' },
+            { id: 'episode-2', title: 'Episode 2' },
+        ],
+        "season-2": [
+            { id: 'episode-1', title: 'Episode 1' },
+            { id: 'episode-2', title: 'Episode 2' },
+        ]
+    };
+
+    return episodes[season] || [];
+}
+
+seasonSelect.addEventListener("change", updateEpisodeOptions);
+
+playBtn.addEventListener("click", () => {
+    const selectedEpisode = episodeSelect.value;
+    playEpisode(selectedEpisode);
 });
 
-// Function to enter the main site
-function enterSite() {
-  window.location.href = "index.html"; // Redirect to main site
+function playEpisode(episodeId) {
+    // Logic to play the selected episode, e.g., updating the iframe source
+    console.log("Playing episode:", episodeId);
+    const trailerUrl = `${baseUrl}/movie/${episodeId}/videos?api_key=${apiKey}`;
+    fetch(trailerUrl)
+        .then(res => res.json())
+        .then(data => {
+            const videoKey = data.results[0]?.key;
+            if (videoKey) {
+                videoPlayer.src = `${youtubeBase}${videoKey}`;
+                videoTitle.textContent = episodeId; // Set episode title dynamically
+            }
+        })
+        .catch(err => console.error("Error loading episode:", err));
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+    updateEpisodeOptions();
+});
