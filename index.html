@@ -1,29 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ZETFLIX</title>
-  <link rel="stylesheet" href="css/home.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ZETFLIX</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"/>
+    <link rel="stylesheet" href="css/home.css" />
 </head>
 <body>
-  <!-- Landing Page Section -->
-  <div class="landing-page">
-    <header class="landing-header">
-      <div class="logo">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/7/75/Netflix_icon.svg" alt="ZETFLIX Logo" style="width: 150px; vertical-align: middle; margin-right: 8px;" />
-        <span>ZETFLIX</span>
-      </div>
+    <!-- Header Section -->
+    <header>
+        <a href="#" class="logo"><img src="https://i.imgur.com/w1Pnays.png" alt="ZETFLIX Logo" /></a>
+        <ul class="navigation">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">TV Shows</a></li>
+            <li><a href="#">Movies</a></li>
+            <li><a href="#">Latest</a></li>
+            <li><a href="#">My List</a></li>
+        </ul>
+        <div class="search">
+            <input type="text" placeholder="Search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
     </header>
-    
-    <!-- Random Video Section -->
-    <section class="video-container">
-      <h1>Now Playing: <span id="video-title">Loading...</span></h1>
-      <iframe id="video-player" width="100%" height="500" src="" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      <button id="enter-site-button" onclick="enterSite()">Enter the site</button>
-    </section>
-  </div>
 
-  <script src="js/landing.js"></script>
+    <!-- Banner Section -->
+    <div class="banner">
+        <img src="https://i.imgur.com/7bdh8bG.jpg" class="bg" alt="bg img" />
+        <div class="content">
+            <img src="https://i.imgur.com/HMPK6ev.png" alt="movie name" class="movieTitle" />
+            <h4>
+                <span>2020</span>
+                <span><i>+13</i></span>
+                <span>1h 55min</span>
+                <span>Action</span>
+            </h4>
+        </div>
+    </div>
+
+    <!-- TV Show Selection Section -->
+    <div class="tv-show-container">
+        <h2>TV Show Name</h2>
+        <div class="season-selection">
+            <label for="seasons">Select Season:</label>
+            <select id="seasons">
+                <option value="season-1">Season 1</option>
+                <option value="season-2">Season 2</option>
+            </select>
+        </div>
+
+        <div class="episode-selection">
+            <label for="episodes">Select Episode:</label>
+            <select id="episodes">
+                <option value="episode-1">Episode 1</option>
+                <option value="episode-2">Episode 2</option>
+            </select>
+        </div>
+
+        <button id="play-episode">Play</button>
+    </div>
+
+    <!-- Video Player Section -->
+    <section class="video-container">
+        <h1>Now Playing: <span id="video-title">Loading...</span></h1>
+        <iframe id="video-player" width="100%" height="500" src="" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <button id="enter-site-button" onclick="enterSite()">Enter the site</button>
+    </section>
+
+    <script src="js/landing.js"></script>
+    <script src="js/home.js"></script>
 </body>
 </html>
